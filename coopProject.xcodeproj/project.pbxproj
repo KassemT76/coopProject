@@ -102,9 +102,9 @@
 				8F79F8A62897602D0075E867 /* AppDelegate.swift */,
 				8F79F8A82897602D0075E867 /* SceneDelegate.swift */,
 				8F79F8AA2897602D0075E867 /* ViewController.swift */,
+				8F79F8B12897602E0075E867 /* LaunchScreen.storyboard */,
 				8F79F8AC2897602D0075E867 /* Main.storyboard */,
 				8F79F8AF2897602E0075E867 /* Assets.xcassets */,
-				8F79F8B12897602E0075E867 /* LaunchScreen.storyboard */,
 				8F79F8B42897602E0075E867 /* Info.plist */,
 			);
 			path = coopProject;
