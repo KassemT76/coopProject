@@ -9,6 +9,8 @@ target 'coopProject' do
 pod 'Firebase'
 pod 'Firebase/Core'
 pod 'Firebase/Database'
+pod 'FirebaseFirestore'
+pod 'FirebaseAuth'
 
   target 'coopProjectTests' do
     inherit! :search_paths
