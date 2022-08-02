@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5A6F8B69F756FD24A3333551 /* Pods_coopProject_coopProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D8D6C94D6BE7D1A359D96D /* Pods_coopProject_coopProjectUITests.framework */; };
 		614253FBF58E4A7F1D34AAC8 /* Pods_coopProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A75F98870D6806C8D7897B /* Pods_coopProject.framework */; };
+		8F561D452898F49C00B631F7 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F561D442898F49C00B631F7 /* CustomTableViewCell.swift */; };
+		8F561D472899026D00B631F7 /* fdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F561D462899026D00B631F7 /* fdata.swift */; };
 		8F79F8A72897602D0075E867 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F79F8A62897602D0075E867 /* AppDelegate.swift */; };
 		8F79F8A92897602D0075E867 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F79F8A82897602D0075E867 /* SceneDelegate.swift */; };
 		8F79F8AB2897602D0075E867 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F79F8AA2897602D0075E867 /* ViewController.swift */; };
@@ -45,6 +47,8 @@
 		39D8D6C94D6BE7D1A359D96D /* Pods_coopProject_coopProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_coopProject_coopProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60E1A40A3C1051B94527350C /* Pods-coopProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coopProject.release.xcconfig"; path = "Target Support Files/Pods-coopProject/Pods-coopProject.release.xcconfig"; sourceTree = "<group>"; };
 		69EFBD1E511B93846FD5FD15 /* Pods-coopProject-coopProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-coopProject-coopProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-coopProject-coopProjectUITests/Pods-coopProject-coopProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8F561D442898F49C00B631F7 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		8F561D462899026D00B631F7 /* fdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fdata.swift; sourceTree = "<group>"; };
 		8F79F8A32897602D0075E867 /* coopProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = coopProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F79F8A62897602D0075E867 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F79F8A82897602D0075E867 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +110,33 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		8F561D482899027100B631F7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8F561D462899026D00B631F7 /* fdata.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8F561D492899028000B631F7 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				8F79F8A82897602D0075E867 /* SceneDelegate.swift */,
+				8F79F8A62897602D0075E867 /* AppDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		8F561D4A2899028600B631F7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8F79F8AA2897602D0075E867 /* ViewController.swift */,
+				8F79F8D6289763D20075E867 /* ViewController2.swift */,
+				8F79F8D8289763DF0075E867 /* ViewController3.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		8F79F89A2897602D0075E867 = {
 			isa = PBXGroup;
 			children = (
@@ -129,12 +160,11 @@
 		8F79F8A52897602D0075E867 /* coopProject */ = {
 			isa = PBXGroup;
 			children = (
-				8F79F8A62897602D0075E867 /* AppDelegate.swift */,
-				8F79F8A82897602D0075E867 /* SceneDelegate.swift */,
-				8F79F8AA2897602D0075E867 /* ViewController.swift */,
-				8F79F8D6289763D20075E867 /* ViewController2.swift */,
-				8F79F8D8289763DF0075E867 /* ViewController3.swift */,
+				8F561D4A2899028600B631F7 /* View Controllers */,
+				8F561D492899028000B631F7 /* Delegates */,
+				8F561D482899027100B631F7 /* Models */,
 				8F79F8DA289764690075E867 /* APICaller.swift */,
+				8F561D442898F49C00B631F7 /* CustomTableViewCell.swift */,
 				8F79F8B12897602E0075E867 /* LaunchScreen.storyboard */,
 				8F79F8AC2897602D0075E867 /* Main.storyboard */,
 				8F79F8AF2897602E0075E867 /* Assets.xcassets */,
@@ -397,8 +427,10 @@
 				8F79F8D9289763DF0075E867 /* ViewController3.swift in Sources */,
 				8F79F8DB289764690075E867 /* APICaller.swift in Sources */,
 				8F79F8AB2897602D0075E867 /* ViewController.swift in Sources */,
+				8F561D472899026D00B631F7 /* fdata.swift in Sources */,
 				8F79F8D7289763D20075E867 /* ViewController2.swift in Sources */,
 				8F79F8A72897602D0075E867 /* AppDelegate.swift in Sources */,
+				8F561D452898F49C00B631F7 /* CustomTableViewCell.swift in Sources */,
 				8F79F8A92897602D0075E867 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

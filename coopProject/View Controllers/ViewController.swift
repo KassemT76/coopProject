@@ -8,6 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
+    @Published var list = [fdata]()
     //Function to call apiCaller
     private let apiCaller = APICaller()
     
@@ -16,7 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let cellSpacingHeight: CGFloat = 5
     
     //Data String
-    private var data = [String]()
+    private var data = [fdata]()
     
     //Loads Views
     override func viewDidLoad() {
@@ -24,7 +25,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifier)
         
         // Do any additional setup after loading the view.
     }
@@ -36,7 +37,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         apiCaller.fetchData(pagination: false, completion: { [weak self] result in
             switch result {
             case .success(let data):
-                self?.data.append(contentsOf: data)
+                self?.data = data
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
@@ -73,12 +74,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return 100.0;//Choose your custom row height
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+           print("section: \(indexPath.section)")
+           print("row: \(indexPath.row)")
+        print(data[indexPath.section].title)
+    }
+    
     //Put text in section
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->
         UITableViewCell{
-            let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell")
-            cell.textLabel?.text = data[indexPath.section]
-            cell.detailTextLabel?.text = "Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum"
+            let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath)
+            cell.textLabel?.text = data[indexPath.section].title
+            cell.detailTextLabel?.text = data[indexPath.section].body
             return cell
     }
     
