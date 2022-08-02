@@ -70,14 +70,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return headerView
     }
     
+    //Row height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0;//Choose your custom row height
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-           print("section: \(indexPath.section)")
-           print("row: \(indexPath.row)")
-        print(data[indexPath.section].title)
+        return 100.0;
     }
     
     //Put text in section
@@ -87,6 +82,32 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.textLabel?.text = data[indexPath.section].title
             cell.detailTextLabel?.text = data[indexPath.section].body
             return cell
+    }
+    //------------------------------------------------//
+    
+    //----------      INTERACTIONS        ------------//
+    
+    //------------------------------------------------//
+    
+    //Does something when you select a cell/section/row
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+           print("section: \(indexPath.section)")
+           print("row: \(indexPath.row)")
+        print(data[indexPath.section].id)
+        apiCaller.fetchPostData(id: data[indexPath.section].id) { result in
+            
+            switch result {
+            case .success(let arr):
+                print("View side", arr)
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyBoard.instantiateViewController(withIdentifier: "ViewControllerExapandedPost") as! ViewControllerExapandedPost
+                self.show(vc, sender: self)
+        
+            case .failure(_):
+                print("Failed to fetch data")
+                break
+            }
+        }
     }
     
     //Does Spinner when you are at the end
@@ -101,8 +122,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //Does Pagination
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("User Scrolling")
-        
         let position = scrollView.contentOffset.y
         
         //Checks if you reach the end

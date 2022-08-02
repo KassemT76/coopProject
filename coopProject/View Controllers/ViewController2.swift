@@ -9,33 +9,18 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
+
 class ViewController2: UIViewController {
-    let db = Firestore.firestore()
     
-    @IBAction func frat(_ sender: Any) {
-        getData()
-        print("pressed")
+    private let apiCaller = APICaller()
+    
+    @IBOutlet weak var titleTextIn: UITextField!
+    @IBOutlet weak var bodyTextIn: UITextView!
+    @IBOutlet weak var submitButton: UIButton!
+    
+    
+    @IBAction func addPost(_ sender: Any) {
+        apiCaller.addData(title: titleTextIn.text ?? "", body: bodyTextIn.text ?? "")
     }
-    @IBOutlet weak var butt: UIButton!
-func getData(){
-   db.collection("test").getDocuments { snapshot, err in
-       if err == nil{
-           if let snapshot = snapshot {
-               snapshot.documents.map { d  -> String in
-               let id = d.documentID
-               let one = d["name"] as? String
-               let two = d["email"] as? String
-               let three = d["password"] as? String
-               
-               print(id, one, two, three)
-                   
-                   return one ?? ""
-               }
-           }
-       }
-       else {
-           print("Err")
-       }
-   }
 }
-}
+
