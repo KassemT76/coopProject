@@ -613,6 +613,7 @@
 				DEVELOPMENT_TEAM = VYH36J5Z27;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = coopProject/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Academate!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -642,6 +643,7 @@
 				DEVELOPMENT_TEAM = VYH36J5Z27;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = coopProject/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Academate!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

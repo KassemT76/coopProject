@@ -6,9 +6,6 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseFirestore
-
 
 class ViewController2: UIViewController {
     
@@ -21,6 +18,9 @@ class ViewController2: UIViewController {
     
     @IBAction func addPost(_ sender: Any) {
         apiCaller.addData(title: titleTextIn.text ?? "", body: bodyTextIn.text ?? "")
+        titleTextIn.text = nil
+        bodyTextIn.text = nil
+        
     }
 }
 

@@ -19,7 +19,7 @@ class APICaller: ObservableObject{
     func fetchPostData(id: String, completion: @escaping (Result<[String], Error>) -> Void){
         //reference to database
         let db = Firestore.firestore()
-        
+        print("id is", id)
         let docRef = db.collection("posts").document(id)
         var arr = [String]()
         docRef.getDocument(source: .cache) { (document, error) in

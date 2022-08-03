@@ -12,7 +12,7 @@ class CustomTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .orange
+        contentView.backgroundColor = .lightGray
     }
 
     override func awakeFromNib() {

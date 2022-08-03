@@ -18,6 +18,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //Data String
     private var data = [fdata]()
+
+    public var fetchThisId:String?
     
     //Loads Views
     override func viewDidLoad() {
@@ -93,21 +95,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
            print("section: \(indexPath.section)")
            print("row: \(indexPath.row)")
-        print(data[indexPath.section].id)
-        apiCaller.fetchPostData(id: data[indexPath.section].id) { result in
-            
-            switch result {
-            case .success(let arr):
-                print("View side", arr)
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyBoard.instantiateViewController(withIdentifier: "ViewControllerExapandedPost") as! ViewControllerExapandedPost
-                self.show(vc, sender: self)
         
-            case .failure(_):
-                print("Failed to fetch data")
-                break
-            }
-        }
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewControllerExapandedPost") as! ViewControllerExapandedPost
+        vc.fetchdId = data[indexPath.section].id
+        print("View 1", vc.fetchdId ?? "Couldnt fetch id from cell")
+        self.show(vc, sender: true)
     }
     
     //Does Spinner when you are at the end
@@ -123,7 +115,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //Does Pagination
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
-        
+    
         //Checks if you reach the end
         if position > (tableView.contentSize.height-100-scrollView.frame.size.height){
             print("Fetching...")
@@ -143,7 +135,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 //Results
                 switch result {
                 case .success(let moreData):
-                    self?.data.append(contentsOf: moreData)
+                    self?.data = moreData
                     DispatchQueue.main.async {
                         self?.tableView.reloadData()
                     }
